@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useAnimation, useInView } from 'framer-motion';
+import { useAnimation, useInView, type Variants } from 'framer-motion';
 
 export function useScrollAnimation() {
   const controls = useAnimation();
@@ -10,12 +10,10 @@ export function useScrollAnimation() {
     if (inView) controls.start('visible');
   }, [controls, inView]);
 
-  return {
-    ref,
-    controls,
-    variants: {
-      hidden: { opacity: 0, y: 20 },
-      visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-    },
+  const variants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' as const } },
   };
+
+  return { ref, controls, variants };
 }
