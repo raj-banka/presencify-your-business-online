@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { UtensilsCrossed, Scissors, ShoppingBag, GraduationCap, ExternalLink, Zap } from 'lucide-react';
+import { UtensilsCrossed, Scissors, Briefcase, GraduationCap, ExternalLink, Zap } from 'lucide-react';
 
 const portfolio = [
   {
@@ -16,10 +16,21 @@ const portfolio = [
     iconColor: 'text-orange-500 bg-orange-100 dark:bg-orange-900/50 dark:text-orange-400',
   },
   {
+    title: 'Developer Portfolio',
+    desc: 'A sleek, professional personal brand website showcasing skills, experience, and complete project portfolios for freelancers and tech professionals.',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop',
+    link: 'https://arjun-mehta-showcase.vercel.app/',
+    delivery: '5 days',
+    icon: Briefcase,
+    features: ['Resume Display', 'Project Showcase', 'Contact Forms'],
+    color: 'bg-blue-50/50 dark:bg-blue-500/10',
+    iconColor: 'text-blue-500 bg-blue-100 dark:bg-blue-900/50 dark:text-blue-400',
+  },
+  {
     title: 'Salon & Beauty',
     desc: 'Elegant showcase with booking form and stunning photo gallery. Clients can see services, pricing, and book appointments instantly.',
     image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop',
-    link: 'https://demo.salon.com',
+    link: 'https://glamour-salon-demo-kappa.vercel.app/',
     delivery: '7 days',
     icon: Scissors,
     features: ['Booking Form', 'Photo Gallery', 'Service Menu'],
@@ -27,21 +38,10 @@ const portfolio = [
     iconColor: 'text-pink-500 bg-pink-100 dark:bg-pink-900/50 dark:text-pink-400',
   },
   {
-    title: 'Gadget Store',
-    desc: 'Robust tech store with a powerful product catalog, categorization, and seamless contact integration for your customers.',
-    image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?q=80&w=800&auto=format&fit=crop',
-    link: 'https://demo.gadgetstore.com',
-    delivery: '12 days',
-    icon: ShoppingBag,
-    features: ['Product Catalog', 'Lead Generation', 'Mobile Optimized'],
-    color: 'bg-blue-50/50 dark:bg-blue-500/10',
-    iconColor: 'text-blue-500 bg-blue-100 dark:bg-blue-900/50 dark:text-blue-400',
-  },
-  {
-    title: 'Training Academy',
+    title: 'Educational Institute',
     desc: 'Educational portal for showcasing courses, sharing faculty profiles, and capturing student admission inquiries easily online.',
     image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop',
-    link: 'https://demo.academy.com',
+    link: 'https://brightminds-academy-demo.vercel.app/',
     delivery: '10 days',
     icon: GraduationCap,
     features: ['Course Listings', 'Admissions', 'Faculty Profiles'],
