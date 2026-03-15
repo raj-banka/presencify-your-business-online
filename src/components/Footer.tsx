@@ -42,12 +42,16 @@ export default function Footer() {
                   <Mail className="w-4 h-4 text-primary" />
                 </div>
                 rajbanka80@gmail.com
+                <br />
+                prashant.comm@gmail.com
               </a>
               <a href="tel:+919142801457" className="group flex items-center gap-3 text-sm text-slate-400 dark:text-muted-foreground hover:text-white dark:hover:text-primary transition-colors">
                 <div className="p-2 bg-slate-900 border border-slate-800 dark:border-transparent dark:bg-secondary rounded-lg group-hover:bg-primary/20 transition-colors">
                   <Phone className="w-4 h-4 text-primary" />
                 </div>
                 +91 9142801457
+                <br />
+                +91 9681961637
               </a>
               <div className="flex items-center gap-3 text-sm text-slate-400 dark:text-muted-foreground">
                 <div className="p-2 bg-slate-900 border border-slate-800 dark:border-transparent dark:bg-secondary rounded-lg">
