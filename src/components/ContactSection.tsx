@@ -24,8 +24,8 @@ export default function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      // Use environment variable for production, fallback to localhost for development if not set
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      // Automatically route native Vercel API Serverless functions on PROD, jump to local Node Server on tests
+      const apiUrl = import.meta.env.PROD ? '' : 'http://localhost:5000';
       const res = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
