@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import AnnouncementBanner from '@/components/AnnouncementBanner';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -19,6 +21,26 @@ import Footer from '@/components/Footer';
 import FloatingButtons from '@/components/FloatingButtons';
 
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if the route pathname matches any specific page slug (e.g., /pricing)
+    const sectionId = location.pathname.substring(1);
+
+    if (sectionId && sectionId !== '') {
+      // Small timeout ensures the DOM has fully rendered before jumping
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    } else {
+      // If they are on "/", scroll precisely to top
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-50 w-full flex flex-col">
