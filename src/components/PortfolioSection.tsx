@@ -55,7 +55,7 @@ export default function PortfolioSection() {
   const displayedPortfolio = showAll ? portfolio : portfolio.slice(0, 2);
 
   return (
-    <section id="portfolio" className="section-padding">
+    <section id="portfolio" className="section-padding bg-muted/30">
       <div className="container-main">
         <h2 className="section-heading text-center mb-4">See What We've Built</h2>
         <p className="section-subheading text-center mb-16 mx-auto max-w-2xl">
