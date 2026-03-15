@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -32,30 +33,46 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/95 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
+    <nav className={`w-full transition-all duration-300 ${scrolled ? 'bg-background/95 backdrop-blur-md shadow-sm' : 'bg-background'}`}>
       <div className="container-main flex items-center justify-between h-16 px-4 md:px-8">
-        <a href="#home" className="font-display text-xl font-bold text-primary">Presencify</a>
+        <a href="#home" className="flex items-center shrink-0 h-12  ">
+          <img src="/logo-light.png" alt="Presencify" className="h-full w-auto object-contain dark:hidden" />
+          <img src="/logo-dark.png" alt="Presencify" className="h-full w-auto object-contain hidden dark:block" />
+        </a>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map(link => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === link.href.slice(1) ? 'text-primary' : 'text-muted-foreground'}`}
-            >
-              {link.label}
-            </a>
-          ))}
+        {/* Desktop Container */}
+        <div className="hidden md:flex items-center w-full ml-16 mr-6 justify-end gap-12">
+
+          {/* Nav Items */}
+          <div className="flex items-center gap-8">
+            {navLinks.map(link => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === link.href.slice(1) ? 'text-primary' : 'text-muted-foreground'}`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <ThemeToggle />
+        </div>
+
+        {/* CTA Button explicitly on the far right */}
+        <div className="hidden md:block shrink-0">
           <Button variant="hero" size="default" asChild>
             <a href="#contact">Get Your Website</a>
           </Button>
         </div>
 
         {/* Mobile toggle */}
-        <button className="md:hidden text-foreground" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
+          <button className="text-foreground p-2" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}

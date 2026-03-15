@@ -30,7 +30,7 @@ export default function ROICalculator() {
               max={50}
               value={customers}
               onChange={(e) => setCustomers(Number(e.target.value))}
-              className="w-full h-2 bg-border rounded-lg appearance-none cursor-pointer accent-primary"
+              className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary"
             />
           </div>
 
@@ -50,7 +50,7 @@ export default function ROICalculator() {
 
           <div className="bg-section-alt rounded-lg p-6 text-center">
             <div className="text-sm text-muted-foreground mb-1">Estimated Monthly Revenue Gain</div>
-            <div className="text-3xl font-bold font-display text-accent">
+            <div className="text-3xl font-bold font-display text-primary">
               ₹{monthlyRevenue.toLocaleString('en-IN')}
             </div>
             <div className="text-sm text-muted-foreground mt-1">vs ₹10,000 one-time website cost</div>

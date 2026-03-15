@@ -1,15 +1,54 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Mail, Clock } from 'lucide-react';
+import { toast } from 'sonner';
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({ name: '', business: '', phone: '', email: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+
+    if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    if (form.phone && !/^\+?[0-9\s\-()]{7,15}$/.test(form.phone)) {
+      toast.error("Please enter a valid phone number.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Use environment variable for production, fallback to localhost for development if not set
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${apiUrl}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setSubmitted(true);
+        toast.success("Message sent successfully!");
+        setTimeout(() => {
+          setSubmitted(false);
+          setForm({ name: '', business: '', phone: '', email: '', message: '' });
+        }, 10000);
+      } else {
+        toast.error("Failed to send message: " + (data.error || "Unknown error"));
+      }
+    } catch (e) {
+      toast.error("Could not connect to the email server. Please make sure the backend is running.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -18,7 +57,7 @@ export default function ContactSection() {
         <h2 className="section-heading">Start Your Online Journey Today</h2>
         <p className="section-subheading">Fill in the form and we'll get back to you within 24 hours.</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="max-w-xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -33,17 +72,19 @@ export default function ContactSection() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 {[
-                  { key: 'name', label: 'Your Name', type: 'text', placeholder: 'John Doe' },
-                  { key: 'business', label: 'Business Name', type: 'text', placeholder: 'My Business' },
-                  { key: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+91 98765 43210' },
-                  { key: 'email', label: 'Email', type: 'email', placeholder: 'you@email.com' },
+                  { key: 'name', label: 'Your Name', type: 'text', placeholder: 'John Doe', isRequired: true },
+                  { key: 'business', label: 'Business Name', type: 'text', placeholder: 'My Business', isRequired: false },
+                  { key: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+91 98765 43210', isRequired: form.email.trim() === '' },
+                  { key: 'email', label: 'Email', type: 'email', placeholder: 'you@email.com', isRequired: form.phone.trim() === '' },
                 ].map((field) => (
                   <div key={field.key}>
-                    <label className="block text-sm font-medium text-foreground mb-1.5">{field.label}</label>
+                    <label className="block text-sm font-medium text-foreground mb-1.5">
+                      {field.label} {field.isRequired && <span className="text-destructive">*</span>}
+                    </label>
                     <input
                       type={field.type}
                       placeholder={field.placeholder}
-                      required
+                      required={field.isRequired}
                       value={form[field.key as keyof typeof form]}
                       onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
                       className="w-full px-4 py-2.5 border border-input rounded-lg text-foreground bg-background focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm"
@@ -60,37 +101,11 @@ export default function ContactSection() {
                     className="w-full px-4 py-2.5 border border-input rounded-lg text-foreground bg-background focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm resize-none"
                   />
                 </div>
-                <Button variant="hero" size="lg" type="submit" className="w-full">
-                  Request Website
+                <Button variant="hero" size="lg" type="submit" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending Request...' : 'Request Website'}
                 </Button>
               </form>
             )}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="space-y-6"
-          >
-            <div className="card-base">
-              <Button variant="whatsapp" size="lg" className="w-full" asChild>
-                <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5" /> Chat on WhatsApp
-                </a>
-              </Button>
-            </div>
-            <div className="card-base space-y-4">
-              <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-primary" />
-                <span className="text-sm text-foreground">hello@presencify.com</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-primary" />
-                <span className="text-sm text-muted-foreground">We reply within 24 hours</span>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

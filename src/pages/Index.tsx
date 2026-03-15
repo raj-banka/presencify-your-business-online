@@ -21,8 +21,10 @@ import FloatingButtons from '@/components/FloatingButtons';
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <AnnouncementBanner />
-      <Navbar />
+      <div className="sticky top-0 z-50 w-full flex flex-col">
+        <AnnouncementBanner />
+        <Navbar />
+      </div>
       <HeroSection />
       <ProblemSection />
       <IndustryPackages />

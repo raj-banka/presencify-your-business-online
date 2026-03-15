@@ -33,7 +33,7 @@ export default function CommitmentsSection() {
             <ul className="space-y-3">
               {promises.map((p, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                  <Check className="w-4 h-4 text-accent mt-0.5 shrink-0" /> {p}
+                  <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" /> {p}
                 </li>
               ))}
             </ul>

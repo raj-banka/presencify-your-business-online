@@ -51,7 +51,7 @@ export default function ServicesSection() {
               <ul className="space-y-3">
                 {service.features.map((f, j) => (
                   <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <Check className="w-4 h-4 text-accent mt-0.5 shrink-0" /> {f}
+                    <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" /> {f}
                   </li>
                 ))}
               </ul>

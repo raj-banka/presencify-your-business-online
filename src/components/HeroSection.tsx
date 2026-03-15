@@ -4,9 +4,9 @@ import { useCountUp } from '@/hooks/useCountUp';
 import { Star, Clock, CheckCircle, Globe } from 'lucide-react';
 
 const stats = [
-  { end: 50, suffix: '+', label: 'Websites Delivered', icon: Globe },
-  { end: 4.9, suffix: '★', label: 'Average Rating', icon: Star, decimal: true },
-  { end: 7, suffix: '-Day', label: 'Avg Delivery', icon: Clock },
+  { end: 10, suffix: '+', label: 'Websites Delivered', icon: Globe },
+  { end: 4.7, suffix: '★', label: 'Average Rating', icon: Star, decimal: true },
+  { end: 10, suffix: '-Day', label: 'Avg Delivery', icon: Clock },
   { end: 100, suffix: '%', label: 'Client Satisfaction', icon: CheckCircle },
 ];
 
@@ -24,7 +24,7 @@ function StatItem({ end, suffix, label, decimal }: { end: number; suffix: string
 
 export default function HeroSection() {
   return (
-    <section id="home" className="section-padding pt-32 md:pt-40">
+    <section id="home" className="section-padding pt-16 md:pt-24">
       <div className="container-main text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

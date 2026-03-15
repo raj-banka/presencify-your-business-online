@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,35 +6,91 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 26% 9%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 26% 9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 26% 9%;
-    --primary: 220 80% 48%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 20% 98%;
-    --secondary-foreground: 220 26% 9%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 160 84% 39%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 220 80% 48%;
-    --radius: 0.75rem;
+    --background: 0.98 0 0;
+    --foreground: 0.28 0.04 260.33;
+    --card: 1.00 0 0;
+    --card-foreground: 0.28 0.04 260.33;
+    --popover: 1.00 0 0;
+    --popover-foreground: 0.28 0.04 260.33;
+    --primary: 0.59 0.20 277.06;
+    --primary-foreground: 1.00 0 0;
+    --secondary: 0.93 0.01 261.82;
+    --secondary-foreground: 0.37 0.03 259.73;
+    --muted: 0.97 0 0;
+    --muted-foreground: 0.55 0.02 264.41;
+    --accent: 0.93 0.03 273.66;
+    --accent-foreground: 0.37 0.03 259.73;
+    --destructive: 0.64 0.21 25.39;
+    --destructive-foreground: 1.00 0 0;
+    --border: 0.87 0.01 261.81;
+    --input: 0.87 0.01 261.81;
+    --ring: 0.59 0.20 277.06;
 
-    --section-alt: 210 20% 98%;
-    --hero-gradient: linear-gradient(135deg, hsl(220 80% 48%) 0%, hsl(220 80% 38%) 100%);
-    --accent-gradient: linear-gradient(135deg, hsl(160 84% 39%) 0%, hsl(160 84% 29%) 100%);
-    --shadow-card: 0 1px 3px 0 rgba(0,0,0,0.06), 0 1px 2px -1px rgba(0,0,0,0.06);
-    --shadow-card-hover: 0 10px 25px -5px rgba(26,86,219,0.1), 0 8px 10px -6px rgba(26,86,219,0.05);
+    --chart-1: 0.59 0.20 277.06;
+    --chart-2: 0.51 0.23 276.97;
+    --chart-3: 0.46 0.21 277.06;
+    --chart-4: 0.40 0.18 277.16;
+    --chart-5: 0.36 0.14 278.65;
 
-    --font-display: 'Poppins', sans-serif;
+    --radius: 0.5rem;
+    --section-alt: 0.97 0 0;
+    --hero-gradient: linear-gradient(135deg, oklch(0.59 0.20 277.06) 0%, oklch(0.51 0.23 276.97) 100%);
+    --accent-gradient: linear-gradient(135deg, oklch(0.93 0.03 273.66) 0%, oklch(0.93 0.01 261.82) 100%);
+
+    --font-display: 'Merriweather', serif;
     --font-body: 'Inter', sans-serif;
+
+    --shadow-2xs: 0px 4px 8px -1px oklch(0.00 0 0 / 0.05);
+    --shadow-xs: 0px 4px 8px -1px oklch(0.00 0 0 / 0.05);
+    --shadow-sm: 0px 4px 8px -1px oklch(0.00 0 0 / 0.10), 0px 1px 2px -2px oklch(0.00 0 0 / 0.10);
+    --shadow: 0px 4px 8px -1px oklch(0.00 0 0 / 0.10), 0px 1px 2px -2px oklch(0.00 0 0 / 0.10);
+    --shadow-md: 0px 4px 8px -1px oklch(0.00 0 0 / 0.10), 0px 2px 4px -2px oklch(0.00 0 0 / 0.10);
+    --shadow-lg: 0px 4px 8px -1px oklch(0.00 0 0 / 0.10), 0px 4px 6px -2px oklch(0.00 0 0 / 0.10);
+    --shadow-xl: 0px 4px 8px -1px oklch(0.00 0 0 / 0.10), 0px 8px 10px -2px oklch(0.00 0 0 / 0.10);
+    --shadow-2xl: 0px 4px 8px -1px oklch(0.00 0 0 / 0.25);
+    --shadow-card: var(--shadow-sm);
+    --shadow-card-hover: var(--shadow-md);
+  }
+
+  .dark {
+    --background: 0.21 0.04 264.04;
+    --foreground: 0.93 0.01 256.71;
+    --card: 0.28 0.04 260.33;
+    --card-foreground: 0.93 0.01 256.71;
+    --popover: 0.28 0.04 260.33;
+    --popover-foreground: 0.93 0.01 256.71;
+    --primary: 0.68 0.16 276.93;
+    --primary-foreground: 0.21 0.04 264.04;
+    --secondary: 0.34 0.03 261.83;
+    --secondary-foreground: 0.87 0.01 261.81;
+    --muted: 0.28 0.04 260.33;
+    --muted-foreground: 0.71 0.02 261.33;
+    --accent: 0.37 0.03 259.73;
+    --accent-foreground: 0.87 0.01 261.81;
+    --destructive: 0.64 0.21 25.39;
+    --destructive-foreground: 1.00 0 0;
+    --border: 0.45 0.03 257.68;
+    --input: 0.45 0.03 257.68;
+    --ring: 0.68 0.16 276.93;
+
+    --chart-1: 0.68 0.16 276.93;
+    --chart-2: 0.59 0.20 277.06;
+    --chart-3: 0.51 0.23 276.97;
+    --chart-4: 0.46 0.21 277.06;
+    --chart-5: 0.40 0.18 277.16;
+
+    --section-alt: 0.28 0.04 260.33;
+    --hero-gradient: linear-gradient(135deg, oklch(0.68 0.16 276.93) 0%, oklch(0.59 0.20 277.06) 100%);
+    --accent-gradient: linear-gradient(135deg, oklch(0.37 0.03 259.73) 0%, oklch(0.34 0.03 261.83) 100%);
+
+    --shadow-2xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
+    --shadow-xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
+    --shadow-sm: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 1px 2px -1px oklch(0.00 0 0 / 0.10);
+    --shadow: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 1px 2px -1px oklch(0.00 0 0 / 0.10);
+    --shadow-md: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 2px 4px -1px oklch(0.00 0 0 / 0.10);
+    --shadow-lg: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 4px 6px -1px oklch(0.00 0 0 / 0.10);
+    --shadow-xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 8px 10px -1px oklch(0.00 0 0 / 0.10);
+    --shadow-2xl: 0 1px 3px 0px oklch(0.00 0 0 / 0.25);
   }
 }
 
@@ -42,13 +98,23 @@
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground antialiased;
+    background-color: oklch(var(--background));
+    color: oklch(var(--foreground));
     font-family: var(--font-body);
+    @apply antialiased;
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
   }
+
   html {
     scroll-behavior: smooth;
   }
@@ -58,23 +124,29 @@
   .section-padding {
     @apply py-20 md:py-28 px-4 md:px-8;
   }
+
   .section-alt {
-    background-color: hsl(var(--section-alt));
+    background-color: oklch(var(--section-alt));
   }
+
   .container-main {
     @apply max-w-7xl mx-auto;
   }
+
   .section-heading {
     @apply text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center mb-4;
     font-family: var(--font-display);
   }
+
   .section-subheading {
     @apply text-lg md:text-xl text-muted-foreground text-center max-w-2xl mx-auto mb-12;
   }
+
   .card-base {
     @apply bg-card rounded-xl border border-border p-6 md:p-8 transition-all duration-300;
     box-shadow: var(--shadow-card);
   }
+
   .card-base:hover {
     box-shadow: var(--shadow-card-hover);
     @apply -translate-y-1;

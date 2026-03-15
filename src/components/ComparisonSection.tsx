@@ -41,7 +41,7 @@ export default function ComparisonSection() {
                 <tr key={i} className="border-b border-border/50">
                   <td className="py-3.5 px-4 text-sm text-foreground">{f.name}</td>
                   <td className="py-3.5 px-4 text-center">
-                    <Check className="w-5 h-5 text-accent mx-auto" />
+                    <Check className="w-5 h-5 text-primary mx-auto" />
                   </td>
                   <td className="py-3.5 px-4 text-center">
                     {f.social === false ? (

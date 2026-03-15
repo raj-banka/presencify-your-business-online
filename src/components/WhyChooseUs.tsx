@@ -15,7 +15,7 @@ export default function WhyChooseUs() {
       <div className="container-main">
         <h2 className="section-heading">Why Small Businesses Trust Us</h2>
         <p className="section-subheading">We make getting online simple, fast, and affordable.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
           {reasons.map((r, i) => (
             <motion.div
               key={i}
@@ -23,10 +23,10 @@ export default function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="card-base text-center"
+              className="card-base text-center w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
             >
-              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-3">
-                <r.icon className="w-6 h-6 text-accent" />
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                <r.icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-semibold font-display text-foreground mb-1">{r.title}</h3>
               <p className="text-sm text-muted-foreground">{r.desc}</p>

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { UtensilsCrossed, Scissors, Stethoscope, GraduationCap, ShoppingBag } from 'lucide-react';
+import { UtensilsCrossed, Scissors, FileCode2, GraduationCap, ShoppingBag, Briefcase } from 'lucide-react';
 
 const packages = [
   {
@@ -14,9 +14,9 @@ const packages = [
     features: ['Service showcase', 'Booking inquiry', 'Photo gallery'],
   },
   {
-    icon: Stethoscope,
-    name: 'Medical Clinic',
-    features: ['Doctor profiles', 'Appointment form', 'Services listing'],
+    icon: FileCode2,
+    name: 'Personal Portfolio',
+    features: ['Project showcase', 'Resume download', 'Contact form'],
   },
   {
     icon: GraduationCap,
@@ -27,6 +27,11 @@ const packages = [
     icon: ShoppingBag,
     name: 'Retail Shop',
     features: ['Product showcase', 'Contact & location', 'Special offers page'],
+  },
+  {
+    icon: Briefcase,
+    name: 'Professional Services',
+    features: ['Service breakdown', 'Client testimonials', 'Consultation form'],
   },
 ];
 
@@ -46,14 +51,14 @@ export default function IndustryPackages() {
               transition={{ delay: i * 0.08, duration: 0.5 }}
               className="card-base flex flex-col"
             >
-              <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                <pkg.icon className="w-6 h-6 text-accent" />
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <pkg.icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-lg font-semibold font-display text-foreground mb-3">{pkg.name}</h3>
               <ul className="space-y-2 mb-6 flex-1">
                 {pkg.features.map((f, j) => (
                   <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <span className="text-accent mt-0.5">✓</span> {f}
+                    <span className="text-primary mt-0.5">✓</span> {f}
                   </li>
                 ))}
               </ul>
